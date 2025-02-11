@@ -484,8 +484,11 @@ int print_info(struct configuration* config_flags, struct info* user_info) {
   char print_buf[1024]; // for responsively print
 
   // print collected info - from host to cpu info
+
+  // emgym added fix: print a return carriage before output
+    printf("\r");
   if (config_flags->show.user)
-    responsively_printf(print_buf, "%s%s%s%s@%s", MOVE_CURSOR, NORMAL, BOLD, user_info->user, user_info->host);
+    responsively_printf(print_buf, "\n%s%s%s%s@%s", MOVE_CURSOR, NORMAL, BOLD, user_info->user, user_info->host);
   uwu_name(user_info);
   if (config_flags->show.os)
     responsively_printf(print_buf, "%s%s%sOWOS     %s%s", MOVE_CURSOR, NORMAL, BOLD, NORMAL, user_info->os_name);
